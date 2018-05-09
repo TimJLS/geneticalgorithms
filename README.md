@@ -1,2 +1,2 @@
 # geneticalgorithms
-GeneticAlgorithmsInPython
+Genetic Algorithms In Python DEAP
