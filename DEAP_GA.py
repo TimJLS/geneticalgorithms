@@ -11,18 +11,18 @@ from deap import base, creator
 
 creator.create("FitnessMin", base.Fitness, weights=(-1.0,))
 # weights 1.0, 求最大值,-1.0 求最小值
-# (1.0,-1.0,)求第一个参数的最大值,求第二个参数的最小值
+# (1.0,-1.0,)求第一個參數的最大值,求第二個參數的最小值
 creator.create("Individual", list, fitness=creator.FitnessMin)
 
 # Initialization
 import random
 from deap import tools
 
-IND_SIZE = 10  # 种群数
+IND_SIZE = 10  # 種群數
 
 toolbox = base.Toolbox()
 toolbox.register("attribute", random.random)
-# 调用randon.random为每一个基因编码编码创建 随机初始值 也就是范围[0,1]
+# 調用randon.random為每一個基因編碼編碼創建 隨機初始值 也就是範圍[0,1]
 toolbox.register("individual", tools.initRepeat, creator.Individual,
                  toolbox.attribute, n=IND_SIZE)
 toolbox.register("population", tools.initRepeat, list, toolbox.individual)
@@ -37,8 +37,8 @@ def evaluate(individual):
 
 # use tools in deap to creat our application
 toolbox.register("mate", tools.cxTwoPoint) # mate:交叉
-toolbox.register("mutate", tools.mutGaussian, mu=0, sigma=1, indpb=0.1) # mutate : 变异
-toolbox.register("select", tools.selTournament, tournsize=3) # select : 选择保留的最佳个体
+toolbox.register("mutate", tools.mutGaussian, mu=0, sigma=1, indpb=0.1) # mutate : 變異
+toolbox.register("select", tools.selTournament, tournsize=3) # select :選擇保留的最佳個體
 toolbox.register("evaluate", evaluate)  # commit our evaluate
 
 
@@ -64,7 +64,7 @@ def main():
     for ind, fit in zip(pop, fitnesses):
         ind.fitness.values = fit
 
-    print("  Evaluated %i individuals" % len(pop))  # 这时候，pop的长度还是300呢
+    print("  Evaluated %i individuals" % len(pop))  # 這時候，pop的長度還是300呢
     print("-- Iterative %i times --" % NGEN)
 
     for g in range(NGEN):
